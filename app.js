@@ -12,17 +12,18 @@ let audioPlayer = {
 		this.pause();
 		//get audio file
 		var name = $(element).attr('id')
-		var audio = 
 		//play audio file
+		this.currentlyPlaying = $(element).children('audio');
+		$(element).children('audio').trigger('play');
 		//control progress bar
+		// set state
 		this.playing = true;
-		console.log("playing!");
-		
-
+		console.log("playing "+ name);
 	},
 	pause: function () {
 		if (this.playing){
 			// stop audio
+			this.currentlyPlaying.trigger('pause')
 			this.playing = false;
 		} else {
 			console.log("Nothing's playing!");
