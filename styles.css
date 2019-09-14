@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Schoolbell|Monoton&display=swap');
+@import url('https://use.typekit.net/ilo7tmb.css');
+
 body {
 	width: 100%;
 	height: 100%;
 	margin: 0;
-	padding: 0;
+    padding: 0;
+    background-color: black;
 }
 #container {
     width: 100%;
@@ -15,7 +19,7 @@ body {
 }
 
 .board-button {
-    height: 33.333333%;
+    height: 33.333333333333333333%;
     width: 50%;
     display: block;
     text-align: center;
@@ -24,7 +28,7 @@ body {
 	margin: 0;
     float: left;
     position: relative;
-    font-size: 48px;
+    font-size: 148px;
 }
 
 .board-button .progress {
@@ -35,6 +39,56 @@ body {
     width: 0px;
     background-color: grey;
     opacity: 0.5;
+}
+
+.board-button#intro {
+    font-family: 
+}
+
+.board-button#paris {
+    font-family: lust-display;
+}
+
+.board-button#bangkok {
+    font-family: adobe-thai;
+    font-size: 140px;
+}
+
+.board-button#mexicocity {
+    font-family: 'Monoton';
+    font-size: 96px;
+}
+
+.board-button#montreal {
+    font-family: 'Helvetica Neue';
+    font-weight: bold;
+}
+
+.board-button#newyorkcity {
+    font-family: Helvetica; 
+    font-weight: bold; 
+    color: white;
+    font-size: 98px;
+}
+
+.board-button .under {
+    position: absolute;
+}
+
+.board-button#intro .under {
+    top: 205px;
+    left: 105px;
+    line-height: 56px;
+    font-family: 'Schoolbell', cursive;
+    font-size: 87px;
+}
+
+.board-button#bangkok .under {
+    font-family: bungee;
+    top: 191px;
+    left: 275px;
+    line-height: 56px;
+    font-size: 28px;
 }
 
 .deleted {
