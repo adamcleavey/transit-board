@@ -8,10 +8,20 @@ let audioPlayer = {
 	playing: false,
 	currentlyPlaying: null,
 	play: function (element) {
-		//pause audio if active
-		this.pause();
-		//get audio file
+		//get and save name
 		var name = $(element).attr('id')
+		//pause audio if active
+		this.pause(name);
+		// if its the same one as previously active, stop it.
+		if (this.currentlyPlaying) {
+			console.log(this.currentlyPlaying.attr('id'));
+			if (this.currentlyPlaying.attr('id')===name+'-audio') {
+				console.log('same audio, stopping')
+				this.playing = false;
+				this.currentlyPlaying = null;
+				return;
+			}
+		}
 		//play audio file
 		this.currentlyPlaying = $(element).children('audio');
 		$(element).children('audio').trigger('play');
@@ -20,7 +30,7 @@ let audioPlayer = {
 		this.playing = true;
 		console.log("playing "+ name);
 	},
-	pause: function () {
+	pause: function (name) {
 		if (this.playing){
 			// stop audio
 			this.currentlyPlaying.trigger('pause')
@@ -31,7 +41,9 @@ let audioPlayer = {
 	}
 }
 
-
+// button handler
 $('.board-button').click(function () {
 	audioPlayer.play(this);
 });
+
+window.audioPlayer = audioPlayer;
