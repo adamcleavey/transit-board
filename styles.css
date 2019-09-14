@@ -36,9 +36,10 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    width: 0px;
+    width: 0%;
     background-color: grey;
     opacity: 0.5;
+    transition: all 0.3s ease-in;
 }
 
 .board-button#intro {
