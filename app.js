@@ -3,9 +3,6 @@ let audioPlayer = {
 	playing: false,
 	currentlyPlaying: null,
 	progressIndicator: null,
-	resetProgress: function () {
-		$('.progress').css('width', '0% !important');
-	},
 	play: function (element) {
 		//get and save name
 		var name = $(element).attr('id')
@@ -16,6 +13,7 @@ let audioPlayer = {
 			console.log(this.currentlyPlaying.attr('id'));
 			if (this.currentlyPlaying.attr('id')===name+'-audio') {
 				console.log('same audio, stopping')
+				$(element).removeClass('active')
 				this.playing = false;
 				this.currentlyPlaying = null;
 				return;
@@ -25,6 +23,7 @@ let audioPlayer = {
 		this.currentlyPlaying = $(element).children('audio');
 		$(element).children('audio').trigger('play');
 		//control progress bar
+		$(element).addClass('active');
 		var progress = $(element).children('.progress');
 		this.currentlyPlaying.on('timeupdate', function() {
 			var percent = (this.currentTime/this.duration)*100;
@@ -38,10 +37,9 @@ let audioPlayer = {
 	pause: function (name) {
 		if (this.playing){
 			// stop audio
+			$('.board-button.active').removeClass('.active');
 			this.currentlyPlaying.trigger('pause')
 			this.playing = false;
-			console.log('pausing, resetting progress');
-			this.resetProgress();
 		} else {
 			console.log("Nothing's playing!");
 		}
@@ -50,7 +48,6 @@ let audioPlayer = {
 
 // button handler
 $('.board-button').click(function () {
-	$('.progress').css('width', '0%');
 	audioPlayer.play(this);
 });
 
